@@ -6,4 +6,4 @@
 
 运行完整训练以及测试：
 
-python trainning
+python trainning.py
