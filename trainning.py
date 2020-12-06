@@ -113,20 +113,14 @@ for i in range(iters_num):
         #print("Mutation = ",offspring_mutation)
         #基因突变
 
-
         vec_weights[0:parents.shape[0], :] = parents
         vec_weights[parents.shape[0]:, :] = offspring_mutation
         initial_pop_params = vector_trans(vec_weights, initial_pop_params)
-
     else:
         #当不使用遗传算法时，使用梯度下降优化
         #通过误差反向传播法求梯度
         grad = network.gradient(x_batch, t_batch)
         optimizer.update(params, grad)
-
-    #     # 更新
-    #     for key in ('W1', 'b1', 'W2', 'b2'):
-    #         network.params[key] -= learning_rate * grad[key]
 
         loss = network.loss(x_batch, t_batch)
         train_loss_list.append(loss)
